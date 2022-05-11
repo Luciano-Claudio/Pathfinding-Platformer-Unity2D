@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEditor;
 
 public class BotAI : MonoBehaviour
 {
+    public bool DrawPath = false;
     public float minDist;
     public float maxDist;
 
@@ -16,9 +18,7 @@ public class BotAI : MonoBehaviour
     public Transform Target;
 
     public List<Node> Path;
-    public List<Node> Lines;
 
-    public BotMovimentController controllerMovement;
 
     [SerializeField] private float speed;
 
@@ -26,20 +26,22 @@ public class BotAI : MonoBehaviour
     public float jumpForce;
     public bool jump = false;
 
+    private BotMovimentController controllerMovement;
     private Rigidbody2D m_Rigidbody2D;
+    private LineRenderer line;
     private bool tryAgain = false;
-    private Node removeLine = null;
 
     void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         controllerMovement = GetComponent<BotMovimentController>();
         AllNodes = FindObjectsOfType<Node>().ToList();
+        line = GetComponent<LineRenderer>();
     }
 
     void Update()
     {
-        if(m_Rigidbody2D.velocity == Vector2.zero)
+        if (m_Rigidbody2D.velocity == Vector2.zero)
         {
             StartCoroutine(IsStopped());
         }
@@ -56,6 +58,7 @@ public class BotAI : MonoBehaviour
             tryAgain = false;
         }
         MoveTowardsPath();
+        RenderLines();
     }
 
     Node GetClosestNodeTo(Transform t)
@@ -65,7 +68,7 @@ public class BotAI : MonoBehaviour
         foreach (var node in AllNodes)
         {
             float distance = (node.transform.position - t.position).sqrMagnitude;
-            if(distance < minDistance)
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 fNode = node;
@@ -102,7 +105,7 @@ public class BotAI : MonoBehaviour
                 MakePath(nodeAndParent);
                 return;
             }
-            foreach(var node in n.ConnectedTo)
+            foreach (var node in n.ConnectedTo)
             {
                 if (!VisitedNodes.Contains(node))
                 {
@@ -116,7 +119,6 @@ public class BotAI : MonoBehaviour
 
     void MakePath(Dictionary<Node, Node> nap)
     {
-        RemoveLines();
         if (nap.Count > 0)
         {
             if (nap.ContainsKey(TargetNode) && nap.ContainsValue(ClosestNode))
@@ -131,12 +133,6 @@ public class BotAI : MonoBehaviour
                 //Path.Add(ClosestNode);
                 Path.Reverse();
             }
-        }
-        Lines = new List<Node>(Path);
-        for (int i = 0; i < Lines.Count - 1; i++)
-        {
-            Path[i].Line.SetPosition(0, Path[i].transform.position);
-            Path[i].Line.SetPosition(1, Path[i+1].transform.position);
         }
     }
 
@@ -171,7 +167,7 @@ public class BotAI : MonoBehaviour
                 {
                     controllerMovement.HorizontalMove = 1 * speed;
                 }
-                
+
                 if (transform.position.y + .1f < pos.position.y && yMag > minDist)
                 {
                     jump = true;
@@ -182,22 +178,11 @@ public class BotAI : MonoBehaviour
             {
                 if (Path.Count > 1)
                 {
-                    if (removeLine != null)
-                    {
-                        removeLine.Line.SetPosition(0, Vector3.zero);
-                        removeLine.Line.SetPosition(1, Vector3.zero);
-                    }
-                    removeLine = Path.First();
                     Path.Remove(Path.First());
                 }
 
                 if (Path.First() == TargetNode && Vector2.Distance(pos.position, transform.position) < minDist)
                 {
-                    if (removeLine != null)
-                    {
-                        removeLine.Line.SetPosition(0, Vector3.zero);
-                        removeLine.Line.SetPosition(1, Vector3.zero);
-                    }
                     Path.Clear();
                     Target = null;
                 }
@@ -205,15 +190,38 @@ public class BotAI : MonoBehaviour
         }
     }
 
-    void RemoveLines()
+    void RenderLines()
     {
-        foreach (var node in Lines)
+        if (!(Path.Count > 0))
+            return;
+
+        if (!DrawPath)
         {
-            node.Line.SetPosition(0, Vector3.zero);
-            node.Line.SetPosition(1, Vector3.zero);
+            if (line != null) line.positionCount = 0;
+            return;
         }
-        Lines.Clear();
+
+        if (line == null)
+        {
+            line = gameObject.AddComponent<LineRenderer>();
+        }
+        line.startWidth = line.endWidth = .1f;
+        line.startColor = line.endColor = Color.red;
+        if (line.materials.Count() != 0)
+        {
+            line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+        }
+
+        line.positionCount = Path.Count + 1;
+
+        line.SetPosition(0, transform.position);
+
+        for (int i = 0; i < Path.Count; i++)
+        {
+            line.SetPosition(i + 1, Path[i].transform.position);
+        }
     }
+
     IEnumerator IsStopped()
     {
         yield return new WaitForSeconds(1);
