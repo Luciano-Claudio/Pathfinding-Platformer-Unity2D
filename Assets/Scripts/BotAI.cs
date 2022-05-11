@@ -2,43 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEditor;
+using UnityEngine.Tilemaps;
 
 public class BotAI : MonoBehaviour
 {
-    public bool DrawPath = false;
-    public float minDist;
-    public float maxDist;
 
-    public List<Node> AllNodes = new List<Node>();
+    [SerializeField] private bool DrawPath = false;
 
-    public Node ClosestNode;
-    public Node TargetNode;
+
+    [Tooltip("Speed to apply velocity")]
+    [SerializeField] private float speed;
+
+    private float minDist;
+    private float minYDist;
+
+    [Tooltip("Max distance in blocks you can jump")]
+    [SerializeField] private float maxDistanceToJump;
+    private float maxDist;
 
     public Transform Target;
 
-    public List<Node> Path;
+    [SerializeField] private List<Node> Path;
 
+    private List<Node> AllNodes = new List<Node>();
 
-    [SerializeField] private float speed;
-
-    [SerializeField] private float[] JumpForces;
-    public float jumpForce;
-    public bool jump = false;
+    private Node ClosestNode;
+    private Node TargetNode;
 
     private BotMovimentController controllerMovement;
+
     private Rigidbody2D m_Rigidbody2D;
-    private LineRenderer line;
+
+    private LineRenderer m_LineRenderer;
+
+    private AIPath PathController;
+    private Tilemap tile;
+
     private bool tryAgain = false;
+    private bool canJump = true;
 
     void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        if (m_Rigidbody2D == null)
+        {
+            m_Rigidbody2D = gameObject.AddComponent<Rigidbody2D>();
+            m_Rigidbody2D.freezeRotation = true;
+        }
         controllerMovement = GetComponent<BotMovimentController>();
+        PathController = FindObjectOfType<AIPath>();
         AllNodes = FindObjectsOfType<Node>().ToList();
-        line = GetComponent<LineRenderer>();
-    }
+        m_LineRenderer = GetComponent<LineRenderer>();
 
+        tile = PathController != null ? PathController.Tile : null;
+    }
+    private void Start()
+    {
+        minDist = .1f;
+        minYDist = tile != null ? tile.cellSize.y : 1f;
+        maxDist = maxDistanceToJump + .1f;
+    }
     void Update()
     {
         if (m_Rigidbody2D.velocity == Vector2.zero)
@@ -49,6 +72,7 @@ public class BotAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        RenderLines();
         if (Target == null)
             return;
 
@@ -58,7 +82,6 @@ public class BotAI : MonoBehaviour
             tryAgain = false;
         }
         MoveTowardsPath();
-        RenderLines();
     }
 
     Node GetClosestNodeTo(Transform t)
@@ -107,7 +130,7 @@ public class BotAI : MonoBehaviour
             }
             foreach (var node in n.ConnectedTo)
             {
-                if (!VisitedNodes.Contains(node))
+                if (!VisitedNodes.Contains(node) && Mathf.Abs(n.transform.position.y - node.transform.position.y) <= maxDist)
                 {
                     VisitedNodes.Add(node);
                     nodeAndParent.Add(node, n);
@@ -115,6 +138,7 @@ public class BotAI : MonoBehaviour
                 }
             }
         }
+        Target = null;
     }
 
     void MakePath(Dictionary<Node, Node> nap)
@@ -139,86 +163,88 @@ public class BotAI : MonoBehaviour
     void MoveTowardsPath()
     {
         controllerMovement.HorizontalMove = 0;
-        jump = false;
 
         if (Path.Count > 0)
         {
             var currentNode = Path.First();
             Transform pos = currentNode.transform;
-            /*
-            if (Path.Count == 1)
-                pos = Target;
-            */
+
             var xMag = Mathf.Abs(pos.position.x - transform.position.x);
             var yMag = pos.position.y - transform.position.y;
 
 
 
-            if (currentNode && xMag >= minDist && yMag <= maxDist)
+            if (currentNode && yMag <= maxDist && (xMag >= minDist || Mathf.Abs(yMag) >= minYDist))
             {
-                jumpForce = yMag > 0 ? JumpForces[Mathf.RoundToInt(yMag)] : 0;
-                //Debug.Log(jumpForce);
-                controllerMovement.m_JumpForce = jumpForce;
+                int direction = 0;
                 if (transform.position.x > pos.position.x)
-                {
-                    controllerMovement.HorizontalMove = -1 * speed;
-                }
+                    direction = -1;
                 if (transform.position.x < pos.position.x)
-                {
-                    controllerMovement.HorizontalMove = 1 * speed;
-                }
+                    direction = 1;
 
-                if (transform.position.y + .1f < pos.position.y && yMag > minDist)
+                controllerMovement.HorizontalMove = direction * speed;
+
+                controllerMovement.m_JumpForce = CalculateJumpForce(yMag, direction, pos.position);
+
+                if (transform.position.y + .1f < pos.position.y && yMag > minDist && canJump)
                 {
-                    jump = true;
-                    controllerMovement.IsJump = jump;
+                    controllerMovement.IsJump = true;
+                    canJump = false;
                 }
             }
             else
             {
-                if (Path.Count > 1)
-                {
-                    Path.Remove(Path.First());
-                }
-
                 if (Path.First() == TargetNode && Vector2.Distance(pos.position, transform.position) < minDist)
                 {
                     Path.Clear();
                     Target = null;
+                    canJump = true;
+                }
+
+                if (Path.Count > 1)
+                {
+                    Path.Remove(Path.First());
+                    canJump = true;
                 }
             }
         }
     }
+    private Vector2 CalculateJumpForce(float jumpHeight, int direction, Vector2 target)
+    {
+
+        Vector2 forces;
+        float yForce = Mathf.Sqrt(2 * jumpHeight * Physics2D.gravity.magnitude * m_Rigidbody2D.gravityScale) + .5f;
+
+        forces = new Vector2(direction * 1, yForce);
+        return forces;
+    }
 
     void RenderLines()
     {
-        if (!(Path.Count > 0))
-            return;
-
-        if (!DrawPath)
+        if (!DrawPath || Target == null || Path.Count <= 0)
         {
-            if (line != null) line.positionCount = 0;
+            if (m_LineRenderer != null) m_LineRenderer.positionCount = 0;
             return;
         }
 
-        if (line == null)
+        if (m_LineRenderer == null)
         {
-            line = gameObject.AddComponent<LineRenderer>();
+            m_LineRenderer = gameObject.AddComponent<LineRenderer>();
         }
-        line.startWidth = line.endWidth = .1f;
-        line.startColor = line.endColor = Color.red;
-        if (line.materials.Count() != 0)
+        m_LineRenderer.startWidth = m_LineRenderer.endWidth = .1f;
+        m_LineRenderer.startColor = m_LineRenderer.endColor = Color.red;
+        if (m_LineRenderer.materials.Count() != 0)
         {
-            line.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+            m_LineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
         }
 
-        line.positionCount = Path.Count + 1;
+        m_LineRenderer.positionCount = Path.Count + 1;
 
-        line.SetPosition(0, transform.position);
+        m_LineRenderer.SetPosition(0, transform.position);
 
         for (int i = 0; i < Path.Count; i++)
         {
-            line.SetPosition(i + 1, Path[i].transform.position);
+            m_LineRenderer.SetPosition(i + 1, Path[i].transform.position);
         }
     }
 

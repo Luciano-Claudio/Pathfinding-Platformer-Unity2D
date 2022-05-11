@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class BotMovimentController : MonoBehaviour
 {
-    //public float m_JumpForce = 400f;
-    //public float runSpeed = 40f;
-
-
-    [SerializeField] private LayerMask m_WhatIsGround;                      
-    [SerializeField] private Transform m_GroundCheck; 
 
     private float m_MovementSmoothing = .05f;
-    const float k_GroundedRadius = .2f; 
-    private bool m_Grounded;       
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  
     private Vector3 m_Velocity = Vector3.zero;
-    private int jumpQuantity = 2;
 
 
     public float HorizontalMove { get; set; }
-    public float m_JumpForce { get; set; }
+    public Vector2 m_JumpForce { get; set; }
     public bool IsJump { get; set; }
 
 
@@ -34,41 +25,13 @@ public class BotMovimentController : MonoBehaviour
     {
         HorizontalMove = 0;
         IsJump = false;
-        /*
-        m_JumpForce = 700;
-        m_runSpeed = 25;*/
-    }
-
-    void Update()
-    {
-        /*
-        HorizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            _isJump = true;
-        }*/
     }
 
     private void FixedUpdate()
     {
-        m_Grounded = false;
-        Collider2D[] colliders;
-        colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                m_Grounded = true;
-            }
-        }
-
         Move(HorizontalMove * Time.deltaTime, IsJump);
         IsJump = false;
 
-        if (m_Grounded) jumpQuantity = 2;
     }
 
 
@@ -86,12 +49,10 @@ public class BotMovimentController : MonoBehaviour
         {
             Flip();
         }
-        if (jump && jumpQuantity > 0)
+        if (jump)
         {
             m_Rigidbody2D.velocity = Vector2.zero;
-            m_Grounded = false;
-            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            jumpQuantity--;
+            m_Rigidbody2D.AddForce(m_JumpForce, ForceMode2D.Impulse);
         }
 
     }
@@ -107,8 +68,4 @@ public class BotMovimentController : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(m_GroundCheck.position, k_GroundedRadius);
-    }
 }

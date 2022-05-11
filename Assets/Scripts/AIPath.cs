@@ -8,23 +8,23 @@ public class AIPath : MonoBehaviour
 {
     [SerializeField] private Tilemap tile;
 
+    public Tilemap Tile { get => tile; private set => tile = value; }
 
     [ContextMenu("Create Nodes")]
     void CreateNodes()
     {
-        tile = FindObjectOfType<Tilemap>();
-        if (tile == null)
+        if (Tile == null)
         {
             Debug.Log("You must have a tilemap in your project");
             return;
         }
 
-        Vector3 origin = tile.origin;
-        origin.x += tile.cellSize.x / 2;
-        origin.y += tile.cellSize.y / 2;
+        Vector3 origin = Tile.origin;
+        origin.x += Tile.cellSize.x / 2;
+        origin.y += Tile.cellSize.y / 2;
 
         //Debug.Log(origin);
-        Vector3 bounds = tile.size;
+        Vector3 bounds = Tile.size;
         bounds.x -= Mathf.Abs(origin.x);
         bounds.y -= Mathf.Abs(origin.y);
         //Debug.Log(bounds);
@@ -33,11 +33,27 @@ public class AIPath : MonoBehaviour
         {
             for (int i = 0; i < Mathf.Abs(origin.x) + Mathf.Abs(bounds.x); i++) {
                 Vector3 pos = new Vector3(origin.x + i, origin.y + u, 0);
-                if (!tile.HasTile(new Vector3Int(tile.origin.x + i, tile.origin.y + u, 0)) && tile.HasTile(new Vector3Int(tile.origin.x + i, tile.origin.y + u - 1, 0)))
+                if (!Tile.HasTile(new Vector3Int(Tile.origin.x + i, Tile.origin.y + u, 0)) && Tile.HasTile(new Vector3Int(Tile.origin.x + i, Tile.origin.y + u - 1, 0)))
                 {
                     InstantiateNodes(pos);
                 }
             }
+        }
+    }
+
+    [ContextMenu("Make Conections")]
+    void MakeConections()
+    {
+        List<Node> AllNodes = new List<Node>();
+        AllNodes = GetComponentsInChildren<Node>().ToList();
+        if (AllNodes.Count == 0)
+        {
+            Debug.Log("You must build your nodes and place them chiddren of this transform, or use \"Create Nodes\" in Context Menu");
+            return;
+        }
+        foreach(var node in AllNodes)
+        {
+            node.MakeConections();
         }
     }
 
