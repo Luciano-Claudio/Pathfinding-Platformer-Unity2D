@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class BotAI : MonoBehaviour
+public class AIController : MonoBehaviour
 {
 
     [SerializeField] private bool DrawPath = false;
@@ -20,7 +20,7 @@ public class BotAI : MonoBehaviour
     [SerializeField] private float maxDistanceToJump;
     private float maxYDist;
     private float maxXDist;
-    [SerializeField]private float maxHypotenuse;
+    private float maxHypotenuse;
 
     public Transform Target;
 
@@ -39,15 +39,12 @@ public class BotAI : MonoBehaviour
 
     private AIPath PathController;
     private Tilemap tile;
+    private bool canJump = false;
 
-    private Node LastNode;
 
     private bool tryAgain = false;
-    private bool canJump = true;
     public bool Jump { get; private set; }
-    public int Direction { get; private set; }
-    public float tSubida = 0;
-    public float tDescida = 0;
+    public float Direction { get; private set; }
 
     void Awake()
     {
@@ -67,24 +64,16 @@ public class BotAI : MonoBehaviour
     private void Start()
     {
         minDist = .1f;
-        minYDist = tile != null ? tile.cellSize.y : 1f;
+        minYDist = tile != null ? tile.cellSize.y * 2 : 2f;
         maxYDist = maxDistanceToJump + .1f;
         maxXDist = maxYDist * 2;
-        maxHypotenuse = Mathf.Sqrt(2*Mathf.Pow(maxYDist,2));
+        maxHypotenuse = Mathf.Sqrt(2 * Mathf.Pow(maxYDist, 2));
     }
     void Update()
     {
         if (m_Rigidbody2D.velocity == Vector2.zero)
         {
             StartCoroutine(IsStopped());
-        }
-        if (m_Rigidbody2D.velocity.y > 0)
-        {
-            tSubida += Time.deltaTime;
-        }
-        if (m_Rigidbody2D.velocity.y < 0)
-        {
-            tDescida += Time.deltaTime;
         }
     }
 
@@ -148,9 +137,9 @@ public class BotAI : MonoBehaviour
             }
             foreach (var node in n.ConnectedTo)
             {
-                if (!VisitedNodes.Contains(node) 
-                    && !(Mathf.Abs(n.transform.position.y - node.transform.position.y) > maxYDist || Mathf.Abs(n.transform.position.x - node.transform.position.x) > maxXDist 
-                    || (Vector2.Distance(n.transform.position, node.transform.position) > maxHypotenuse && node.transform.position.y - n.transform.position.y > 0)))
+                if (!VisitedNodes.Contains(node)
+                    && !((Mathf.Abs(n.transform.position.y - node.transform.position.y) > maxYDist || Mathf.Abs(n.transform.position.x - node.transform.position.x) > maxXDist
+                    || Vector2.Distance(n.transform.position, node.transform.position) > maxHypotenuse) && node.transform.position.y - n.transform.position.y > 0))
                 {
                     VisitedNodes.Add(node);
                     nodeAndParent.Add(node, n);
@@ -163,6 +152,7 @@ public class BotAI : MonoBehaviour
 
     void MakePath(Dictionary<Node, Node> nap)
     {
+        canJump = false;
         if (nap.Count > 0)
         {
             if (nap.ContainsKey(TargetNode) && nap.ContainsValue(ClosestNode))
@@ -176,9 +166,9 @@ public class BotAI : MonoBehaviour
 
                 //Path.Add(ClosestNode);
                 Path.Reverse();
-                LastNode = Path.First();
             }
         }
+        StartCoroutine(CanJump());
     }
 
     void MoveTowardsPath()
@@ -195,25 +185,30 @@ public class BotAI : MonoBehaviour
 
             float xMag = Mathf.Abs(pos.position.x - transform.position.x);
             float yMag = pos.position.y - transform.position.y;
+            float velocity = speed;
 
 
             if (currentNode && yMag <= maxYDist && (xMag >= minDist || Mathf.Abs(yMag) >= minYDist))
             {
-                float xMagNode = Mathf.Abs(pos.position.x - LastNode.transform.position.x);
-                if (((transform.position.y + .1f < pos.position.y && yMag > minDist) || (xMagNode > 1.1f && currentNode.NodeToJump.Contains(nextNode)))
-                    && canJump)
-                {
-                    Jump = true;
-                    controllerMovement.m_JumpForce = CalculateJumpForce(xMag, Mathf.Abs(yMag));
-                    controllerMovement.IsJump = true;
-                    canJump = false;
-                }
+                float xMagNode = nextNode != null ? Mathf.Abs(pos.position.x - nextNode.transform.position.x) : 0;
+
                 if (transform.position.x > pos.position.x)
                     Direction = -1;
                 if (transform.position.x < pos.position.x)
                     Direction = 1;
 
-                controllerMovement.HorizontalMove = Direction * speed;
+                if (((transform.position.y + .1f < pos.position.y && yMag > minDist) || (xMagNode > 1.1f && currentNode.NodeToJump.Contains(nextNode) && xMag < minDist))
+                    && canJump)
+                {
+                    Jump = true;
+                    velocity = (xMag + 1) * 5;
+                    controllerMovement.m_JumpForce = CalculateJumpForce(xMag, Mathf.Abs(yMag));
+                    controllerMovement.IsJump = true;
+                    canJump = false;
+                }
+                Direction *= velocity * 10;
+
+                controllerMovement.HorizontalMove = Direction;
             }
             else
             {
@@ -226,7 +221,6 @@ public class BotAI : MonoBehaviour
 
                 if (Path.Count > 1)
                 {
-                    LastNode = Path.First();
                     Path.Remove(Path.First());
                     canJump = true;
                 }
@@ -237,15 +231,16 @@ public class BotAI : MonoBehaviour
     {
         float distance = jumpHeight;
 
-        if (jumpHeight < .1f)
-            distance = xDistancefloat / 2;
-        else if (jumpHeight > .1f && jumpHeight < 2 && xDistancefloat > 1.5f)
-            distance = (xDistancefloat + jumpHeight) / 2;
+        if (jumpHeight < .5f)
+            distance = (xDistancefloat + 1) / 2;
 
-        Vector2 force = new Vector2(0, Mathf.Sqrt(2 * distance * Physics2D.gravity.magnitude * m_Rigidbody2D.gravityScale) + .5f);
+        if (distance > maxYDist)
+            distance = maxYDist;
+
+        Vector2 force = new Vector2(0, (Mathf.Sqrt(2 * distance * Physics2D.gravity.magnitude * m_Rigidbody2D.gravityScale) * m_Rigidbody2D.mass) + .5f);
 
         return force;
-    } 
+    }
 
     void RenderLines()
     {
@@ -280,5 +275,10 @@ public class BotAI : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         if (m_Rigidbody2D.velocity == Vector2.zero) tryAgain = true;
+    }
+    IEnumerator CanJump()
+    {
+        yield return new WaitForSeconds(.1f);
+        canJump = true;
     }
 }

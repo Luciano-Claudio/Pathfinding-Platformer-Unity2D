@@ -157,7 +157,7 @@ MonoBehaviour:
   - {fileID: 269583481}
   - {fileID: 593249418}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 44.5, y: -11.5}
 --- !u!4 &3645254
 Transform:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   - {fileID: 1818919825}
   - {fileID: 1664978338}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 3.5, y: -4.5}
 --- !u!4 &6915519
 Transform:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   - {fileID: 1338251841}
   - {fileID: 697836916}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -3.5, y: -2.5}
 --- !u!4 &13123099
 Transform:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   - {fileID: 2129530855}
   - {fileID: 26662211}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 29.5, y: 4.5}
 --- !u!4 &14696290
 Transform:
   m_ObjectHideFlags: 0
@@ -17649,7 +17649,7 @@ MonoBehaviour:
   - {fileID: 2117734922}
   - {fileID: 2129530855}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 32.5, y: 4.5}
 --- !u!1 &40679244
 GameObject:
   m_ObjectHideFlags: 0
@@ -17692,7 +17692,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 3.5, y: 2.5}
 --- !u!4 &40679246
 Transform:
   m_ObjectHideFlags: 0
@@ -17744,8 +17744,9 @@ MonoBehaviour:
   - {fileID: 493300192}
   - {fileID: 1060882341}
   - {fileID: 1478598503}
+  - {fileID: 1338159898}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -13.5, y: 2.5}
 --- !u!4 &50725187
 Transform:
   m_ObjectHideFlags: 0
@@ -17795,7 +17796,7 @@ MonoBehaviour:
   - {fileID: 1987472470}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 27.5, y: -7.5}
 --- !u!4 &53460923
 Transform:
   m_ObjectHideFlags: 0
@@ -17852,7 +17853,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 4.5, y: 2.5}
 --- !u!4 &55477186
 Transform:
   m_ObjectHideFlags: 0
@@ -17912,8 +17913,10 @@ MonoBehaviour:
   - {fileID: 1462632898}
   - {fileID: 903664065}
   - {fileID: 1181181614}
+  - {fileID: 1664978338}
+  - {fileID: 280037658}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 10.5, y: -4.5}
 --- !u!4 &89992948
 Transform:
   m_ObjectHideFlags: 0
@@ -17965,7 +17968,7 @@ MonoBehaviour:
   - {fileID: 1360311177}
   - {fileID: 383214888}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -16.5, y: -10.5}
 --- !u!4 &101942887
 Transform:
   m_ObjectHideFlags: 0
@@ -18022,7 +18025,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 1.5, y: 2.5}
 --- !u!4 &108804345
 Transform:
   m_ObjectHideFlags: 0
@@ -18070,7 +18073,7 @@ MonoBehaviour:
   - {fileID: 330764466}
   - {fileID: 1338159898}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -15.5, y: -0.5}
 --- !u!4 &110812664
 Transform:
   m_ObjectHideFlags: 0
@@ -18131,7 +18134,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 19.5, y: -4.5}
 --- !u!4 &155974746
 Transform:
   m_ObjectHideFlags: 0
@@ -18145,6 +18148,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1352561886}
   m_RootOrder: 80
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &162032265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 162032267}
+  - component: {fileID: 162032266}
+  m_Layer: 0
+  m_Name: Node (172)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &162032266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162032265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318a523fde50c4c409cf455ad16b4392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectedTo:
+  - {fileID: 681737373}
+  nodeToJump: []
+  t: {x: 44.5, y: -0.5}
+--- !u!4 &162032267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162032265}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.20617, y: 2.951182, z: 227.15176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1352561886}
+  m_RootOrder: 172
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192765175
 GameObject:
@@ -18184,7 +18234,7 @@ MonoBehaviour:
   - {fileID: 1060882341}
   - {fileID: 1478598503}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -9.5, y: 2.5}
 --- !u!4 &192765177
 Transform:
   m_ObjectHideFlags: 0
@@ -18232,7 +18282,7 @@ MonoBehaviour:
   - {fileID: 1683472290}
   - {fileID: 384603056}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 32.5, y: -9.5}
 --- !u!4 &207510922
 Transform:
   m_ObjectHideFlags: 0
@@ -18291,7 +18341,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 40.5, y: -4.5}
 --- !u!4 &209183067
 Transform:
   m_ObjectHideFlags: 0
@@ -18340,7 +18390,7 @@ MonoBehaviour:
   - {fileID: 321159409}
   - {fileID: 383831626}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 12.5, y: -11.5}
 --- !u!4 &220408492
 Transform:
   m_ObjectHideFlags: 0
@@ -18399,7 +18449,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 42.5, y: -4.5}
 --- !u!4 &222897550
 Transform:
   m_ObjectHideFlags: 0
@@ -18448,7 +18498,7 @@ MonoBehaviour:
   - {fileID: 593249418}
   - {fileID: 3645253}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 42.5, y: -11.5}
 --- !u!4 &269583482
 Transform:
   m_ObjectHideFlags: 0
@@ -18501,7 +18551,7 @@ MonoBehaviour:
   - {fileID: 1240158134}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 9.5, y: -10.5}
 --- !u!4 &280037659
 Transform:
   m_ObjectHideFlags: 0
@@ -18555,8 +18605,9 @@ MonoBehaviour:
   - {fileID: 1311827989}
   - {fileID: 1023229363}
   - {fileID: 584598218}
+  - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 42.5, y: 3.5}
 --- !u!4 &288750678
 Transform:
   m_ObjectHideFlags: 0
@@ -18604,7 +18655,7 @@ MonoBehaviour:
   - {fileID: 933381617}
   - {fileID: 1914003555}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 11.5, y: 3.5}
 --- !u!4 &304056768
 Transform:
   m_ObjectHideFlags: 0
@@ -18654,7 +18705,7 @@ MonoBehaviour:
   - {fileID: 1138775575}
   - {fileID: 1759967517}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -10.5, y: -9.5}
 --- !u!4 &310044805
 Transform:
   m_ObjectHideFlags: 0
@@ -18707,7 +18758,7 @@ MonoBehaviour:
   - {fileID: 2129530855}
   - {fileID: 26662211}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 26.5, y: 4.5}
 --- !u!4 &312204736
 Transform:
   m_ObjectHideFlags: 0
@@ -18756,7 +18807,7 @@ MonoBehaviour:
   - {fileID: 220408491}
   - {fileID: 383831626}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 13.5, y: -11.5}
 --- !u!4 &321159410
 Transform:
   m_ObjectHideFlags: 0
@@ -18815,7 +18866,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 36.5, y: -4.5}
 --- !u!4 &324164982
 Transform:
   m_ObjectHideFlags: 0
@@ -18863,7 +18914,7 @@ MonoBehaviour:
   - {fileID: 611474817}
   - {fileID: 110812663}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -14.5, y: -0.5}
 --- !u!4 &330764467
 Transform:
   m_ObjectHideFlags: 0
@@ -18912,7 +18963,7 @@ MonoBehaviour:
   - {fileID: 1746910966}
   - {fileID: 693716511}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -4.5, y: -9.5}
 --- !u!4 &348231611
 Transform:
   m_ObjectHideFlags: 0
@@ -18965,7 +19016,7 @@ MonoBehaviour:
   - {fileID: 2018243704}
   - {fileID: 1926772092}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 35.5, y: -10.5}
 --- !u!4 &355239954
 Transform:
   m_ObjectHideFlags: 0
@@ -19018,7 +19069,7 @@ MonoBehaviour:
   - {fileID: 520720100}
   - {fileID: 1545336122}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 17.5, y: -10.5}
 --- !u!4 &363129470
 Transform:
   m_ObjectHideFlags: 0
@@ -19072,7 +19123,7 @@ MonoBehaviour:
   - {fileID: 1680343225}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 14.5, y: 4.5}
 --- !u!4 &364283865
 Transform:
   m_ObjectHideFlags: 0
@@ -19129,7 +19180,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 2.5, y: 2.5}
 --- !u!4 &364344171
 Transform:
   m_ObjectHideFlags: 0
@@ -19182,7 +19233,7 @@ MonoBehaviour:
   - {fileID: 1360311177}
   - {fileID: 873009764}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -13.5, y: -10.5}
 --- !u!4 &383214889
 Transform:
   m_ObjectHideFlags: 0
@@ -19232,7 +19283,7 @@ MonoBehaviour:
   - {fileID: 321159409}
   - {fileID: 2129185911}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 14.5, y: -11.5}
 --- !u!4 &383831627
 Transform:
   m_ObjectHideFlags: 0
@@ -19280,7 +19331,7 @@ MonoBehaviour:
   - {fileID: 207510921}
   - {fileID: 937661167}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 31.5, y: -9.5}
 --- !u!4 &384603057
 Transform:
   m_ObjectHideFlags: 0
@@ -19412,8 +19463,9 @@ MonoBehaviour:
   - {fileID: 933521309}
   - {fileID: 1338251841}
   - {fileID: 697836916}
+  - {fileID: 1500424768}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -5.5, y: -2.5}
 --- !u!4 &387570807
 Transform:
   m_ObjectHideFlags: 0
@@ -19466,7 +19518,7 @@ MonoBehaviour:
   - {fileID: 2018243704}
   - {fileID: 1926772092}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 38.5, y: -10.5}
 --- !u!4 &391509479
 Transform:
   m_ObjectHideFlags: 0
@@ -19527,7 +19579,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 20.5, y: -4.5}
 --- !u!4 &393418640
 Transform:
   m_ObjectHideFlags: 0
@@ -19594,8 +19646,11 @@ MonoBehaviour:
   - {fileID: 906158854}
   - {fileID: 712561201}
   - {fileID: 1680343225}
-  nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  - {fileID: 1122591742}
+  - {fileID: 1165864373}
+  nodeToJump:
+  - {fileID: 1122591742}
+  t: {x: 21.5, y: 4.5}
 --- !u!1 &410522845
 GameObject:
   m_ObjectHideFlags: 0
@@ -19639,7 +19694,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 933381617}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 9.5, y: 2.5}
 --- !u!4 &410522847
 Transform:
   m_ObjectHideFlags: 0
@@ -19692,7 +19747,7 @@ MonoBehaviour:
   - {fileID: 2129530855}
   - {fileID: 26662211}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 27.5, y: 4.5}
 --- !u!4 &466794352
 Transform:
   m_ObjectHideFlags: 0
@@ -19741,7 +19796,7 @@ MonoBehaviour:
   - {fileID: 1423024956}
   - {fileID: 981732738}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 25.5, y: -9.5}
 --- !u!4 &487440992
 Transform:
   m_ObjectHideFlags: 0
@@ -19793,7 +19848,7 @@ MonoBehaviour:
   - {fileID: 1360311177}
   - {fileID: 383214888}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -15.5, y: -10.5}
 --- !u!4 &487861194
 Transform:
   m_ObjectHideFlags: 0
@@ -19846,7 +19901,7 @@ MonoBehaviour:
   - {fileID: 1060882341}
   - {fileID: 1478598503}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -8.5, y: 2.5}
 --- !u!4 &493300193
 Transform:
   m_ObjectHideFlags: 0
@@ -19895,7 +19950,7 @@ MonoBehaviour:
   - {fileID: 1423024956}
   - {fileID: 487440991}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 23.5, y: -9.5}
 --- !u!4 &501598086
 Transform:
   m_ObjectHideFlags: 0
@@ -19949,7 +20004,7 @@ MonoBehaviour:
   - {fileID: 1240158134}
   - {fileID: 280037658}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 10.5, y: -10.5}
 --- !u!4 &514133547
 Transform:
   m_ObjectHideFlags: 0
@@ -20005,8 +20060,11 @@ MonoBehaviour:
   - {fileID: 534359086}
   - {fileID: 1206667351}
   - {fileID: 410522846}
-  nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  - {fileID: 933521309}
+  - {fileID: 1478598503}
+  nodeToJump:
+  - {fileID: 1478598503}
+  t: {x: -1.5, y: 2.5}
 --- !u!4 &515822197
 Transform:
   m_ObjectHideFlags: 0
@@ -20134,7 +20192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.6, y: -1.5, z: -10}
+  m_LocalPosition: {x: 43.17, y: -9.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -20155,6 +20213,7 @@ MonoBehaviour:
   mousePos: {x: 0, y: 0, z: 0}
   Bots: []
   circle: {fileID: 928033900}
+  square: {fileID: 0}
 --- !u!1 &520720099
 GameObject:
   m_ObjectHideFlags: 0
@@ -20193,7 +20252,7 @@ MonoBehaviour:
   - {fileID: 1723873838}
   - {fileID: 1545336122}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 21.5, y: -10.5}
 --- !u!4 &520720101
 Transform:
   m_ObjectHideFlags: 0
@@ -20207,6 +20266,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1352561886}
   m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &523051351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523051353}
+  - component: {fileID: 523051352}
+  m_Layer: 0
+  m_Name: Node (171)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &523051352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523051351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318a523fde50c4c409cf455ad16b4392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectedTo:
+  - {fileID: 162032266}
+  nodeToJump: []
+  t: {x: 43.5, y: -2.5}
+--- !u!4 &523051353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523051351}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.20617, y: 0.9511819, z: 227.15176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1352561886}
+  m_RootOrder: 171
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531036606
 GameObject:
@@ -20252,7 +20358,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 33.5, y: -4.5}
 --- !u!4 &531036608
 Transform:
   m_ObjectHideFlags: 0
@@ -20309,7 +20415,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 7.5, y: 2.5}
 --- !u!4 &534359087
 Transform:
   m_ObjectHideFlags: 0
@@ -20366,7 +20472,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -0.5, y: 2.5}
 --- !u!4 &551120099
 Transform:
   m_ObjectHideFlags: 0
@@ -20441,7 +20547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574874117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.6, y: -1.5, z: -10}
+  m_LocalPosition: {x: 43.17, y: -9.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1751558769}
@@ -20488,7 +20594,7 @@ MonoBehaviour:
   - {fileID: 1023229363}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 41.5, y: 3.5}
 --- !u!4 &584598219
 Transform:
   m_ObjectHideFlags: 0
@@ -20537,7 +20643,7 @@ MonoBehaviour:
   - {fileID: 269583481}
   - {fileID: 3645253}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 43.5, y: -11.5}
 --- !u!4 &593249419
 Transform:
   m_ObjectHideFlags: 0
@@ -20585,7 +20691,7 @@ MonoBehaviour:
   - {fileID: 611474817}
   - {fileID: 1050125531}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -12.5, y: -1.5}
 --- !u!4 &597982207
 Transform:
   m_ObjectHideFlags: 0
@@ -20634,7 +20740,7 @@ MonoBehaviour:
   - {fileID: 1050125531}
   - {fileID: 330764466}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -13.5, y: -1.5}
 --- !u!4 &611474818
 Transform:
   m_ObjectHideFlags: 0
@@ -20683,7 +20789,7 @@ MonoBehaviour:
   - {fileID: 1427027440}
   - {fileID: 1420622546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -1.5, y: -10.5}
 --- !u!4 &616491436
 Transform:
   m_ObjectHideFlags: 0
@@ -20697,6 +20803,101 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1352561886}
   m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &670834903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670834904}
+  - component: {fileID: 670834905}
+  m_Layer: 0
+  m_Name: Node (174)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &670834904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670834903}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.20617, y: 6.951182, z: 227.15176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1352561886}
+  m_RootOrder: 174
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &670834905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670834903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318a523fde50c4c409cf455ad16b4392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectedTo:
+  - {fileID: 288750677}
+  nodeToJump:
+  - {fileID: 288750677}
+  t: {x: 44.5, y: 3.5}
+--- !u!1 &681737372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681737374}
+  - component: {fileID: 681737373}
+  m_Layer: 0
+  m_Name: Node (173)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &681737373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681737372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318a523fde50c4c409cf455ad16b4392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectedTo:
+  - {fileID: 670834905}
+  nodeToJump: []
+  t: {x: 43.5, y: 1.5}
+--- !u!4 &681737374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681737372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.20617, y: 4.951182, z: 227.15176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1352561886}
+  m_RootOrder: 173
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &693694232
 GameObject:
@@ -20736,7 +20937,7 @@ MonoBehaviour:
   - {fileID: 520720100}
   - {fileID: 1545336122}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 18.5, y: -10.5}
 --- !u!4 &693694234
 Transform:
   m_ObjectHideFlags: 0
@@ -20786,7 +20987,7 @@ MonoBehaviour:
   - {fileID: 1746910966}
   - {fileID: 348231610}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -3.5, y: -9.5}
 --- !u!4 &693716512
 Transform:
   m_ObjectHideFlags: 0
@@ -20852,7 +21053,7 @@ MonoBehaviour:
   - {fileID: 933521309}
   - {fileID: 1338251841}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -0.5, y: -2.5}
 --- !u!1 &708929621
 GameObject:
   m_ObjectHideFlags: 0
@@ -20893,7 +21094,7 @@ MonoBehaviour:
   - {fileID: 584598218}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 37.5, y: 3.5}
 --- !u!4 &708929623
 Transform:
   m_ObjectHideFlags: 0
@@ -20947,7 +21148,7 @@ MonoBehaviour:
   - {fileID: 1680343225}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 19.5, y: 4.5}
 --- !u!4 &712561202
 Transform:
   m_ObjectHideFlags: 0
@@ -20997,7 +21198,7 @@ MonoBehaviour:
   - {fileID: 1138775575}
   - {fileID: 1759967517}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -11.5, y: -9.5}
 --- !u!4 &727932814
 Transform:
   m_ObjectHideFlags: 0
@@ -21051,7 +21252,7 @@ MonoBehaviour:
   - {fileID: 1680343225}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 16.5, y: 4.5}
 --- !u!4 &734389606
 Transform:
   m_ObjectHideFlags: 0
@@ -21104,7 +21305,7 @@ MonoBehaviour:
   - {fileID: 1060882341}
   - {fileID: 1478598503}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -10.5, y: 2.5}
 --- !u!4 &745761126
 Transform:
   m_ObjectHideFlags: 0
@@ -21152,7 +21353,7 @@ MonoBehaviour:
   - {fileID: 1258930225}
   - {fileID: 941384535}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 1.5, y: -3.5}
 --- !u!4 &750155196
 Transform:
   m_ObjectHideFlags: 0
@@ -21211,7 +21412,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 35.5, y: -4.5}
 --- !u!4 &754522440
 Transform:
   m_ObjectHideFlags: 0
@@ -21260,7 +21461,7 @@ MonoBehaviour:
   - {fileID: 1918471290}
   - {fileID: 1338159898}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -18.5, y: 0.5}
 --- !u!4 &778893714
 Transform:
   m_ObjectHideFlags: 0
@@ -21319,7 +21520,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 38.5, y: -4.5}
 --- !u!4 &798140139
 Transform:
   m_ObjectHideFlags: 0
@@ -21370,7 +21571,7 @@ MonoBehaviour:
   - {fileID: 1338251841}
   - {fileID: 697836916}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -4.5, y: -2.5}
 --- !u!4 &810178047
 Transform:
   m_ObjectHideFlags: 0
@@ -21425,7 +21626,7 @@ MonoBehaviour:
   - {fileID: 1680343225}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 13.5, y: 4.5}
 --- !u!4 &829754300
 Transform:
   m_ObjectHideFlags: 0
@@ -21476,7 +21677,7 @@ MonoBehaviour:
   - {fileID: 1138775575}
   - {fileID: 1759967517}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -12.5, y: -9.5}
 --- !u!4 &873009765
 Transform:
   m_ObjectHideFlags: 0
@@ -21527,7 +21728,7 @@ MonoBehaviour:
   - {fileID: 1818919825}
   - {fileID: 1664978338}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 5.5, y: -4.5}
 --- !u!4 &888585585
 Transform:
   m_ObjectHideFlags: 0
@@ -21587,8 +21788,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedTo:
   - {fileID: 1512829133}
+  - {fileID: 1500424768}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -7.5, y: -2.5}
 --- !u!1 &903664064
 GameObject:
   m_ObjectHideFlags: 0
@@ -21635,7 +21837,7 @@ MonoBehaviour:
   - {fileID: 1462632898}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 24.5, y: -4.5}
 --- !u!4 &903664066
 Transform:
   m_ObjectHideFlags: 0
@@ -21689,7 +21891,7 @@ MonoBehaviour:
   - {fileID: 1680343225}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 18.5, y: 4.5}
 --- !u!4 &906158855
 Transform:
   m_ObjectHideFlags: 0
@@ -21750,7 +21952,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 11.5, y: -4.5}
 --- !u!4 &908868452
 Transform:
   m_ObjectHideFlags: 0
@@ -21841,7 +22043,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928033898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.42, y: 4.99, z: 0}
+  m_LocalPosition: {x: 31.9, y: 8.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -21881,7 +22083,7 @@ MonoBehaviour:
   - {fileID: 304056767}
   - {fileID: 1914003555}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 10.5, y: 3.5}
 --- !u!4 &933381618
 Transform:
   m_ObjectHideFlags: 0
@@ -21932,7 +22134,7 @@ MonoBehaviour:
   - {fileID: 1338251841}
   - {fileID: 697836916}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -2.5, y: -2.5}
 --- !u!4 &933521310
 Transform:
   m_ObjectHideFlags: 0
@@ -21980,7 +22182,7 @@ MonoBehaviour:
   - {fileID: 384603056}
   - {fileID: 1987472470}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 30.5, y: -8.5}
 --- !u!4 &937661168
 Transform:
   m_ObjectHideFlags: 0
@@ -22028,7 +22230,7 @@ MonoBehaviour:
   - {fileID: 750155195}
   - {fileID: 697836916}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 0.5, y: -3.5}
 --- !u!4 &941384536
 Transform:
   m_ObjectHideFlags: 0
@@ -22081,7 +22283,7 @@ MonoBehaviour:
   - {fileID: 1060882341}
   - {fileID: 1478598503}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -12.5, y: 2.5}
 --- !u!4 &958676622
 Transform:
   m_ObjectHideFlags: 0
@@ -22129,7 +22331,7 @@ MonoBehaviour:
   - {fileID: 487440991}
   - {fileID: 53460922}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 26.5, y: -8.5}
 --- !u!4 &981732739
 Transform:
   m_ObjectHideFlags: 0
@@ -22182,7 +22384,7 @@ MonoBehaviour:
   - {fileID: 2018243704}
   - {fileID: 1926772092}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 34.5, y: -10.5}
 --- !u!4 &1015637635
 Transform:
   m_ObjectHideFlags: 0
@@ -22237,7 +22439,7 @@ MonoBehaviour:
   - {fileID: 584598218}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 38.5, y: 3.5}
 --- !u!4 &1022465127
 Transform:
   m_ObjectHideFlags: 0
@@ -22292,7 +22494,7 @@ MonoBehaviour:
   - {fileID: 584598218}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 40.5, y: 3.5}
 --- !u!4 &1023229364
 Transform:
   m_ObjectHideFlags: 0
@@ -22339,8 +22541,10 @@ MonoBehaviour:
   ConnectedTo:
   - {fileID: 611474817}
   - {fileID: 597982206}
+  - {fileID: 1512829133}
+  - {fileID: 310044804}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -11.5, y: -1.5}
 --- !u!4 &1050125532
 Transform:
   m_ObjectHideFlags: 0
@@ -22393,7 +22597,7 @@ MonoBehaviour:
   - {fileID: 493300192}
   - {fileID: 1478598503}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -7.5, y: 2.5}
 --- !u!4 &1060882342
 Transform:
   m_ObjectHideFlags: 0
@@ -22446,7 +22650,7 @@ MonoBehaviour:
   - {fileID: 520720100}
   - {fileID: 1545336122}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 16.5, y: -10.5}
 --- !u!4 &1079137341
 Transform:
   m_ObjectHideFlags: 0
@@ -22500,7 +22704,7 @@ MonoBehaviour:
   - {fileID: 1680343225}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 17.5, y: 4.5}
 --- !u!4 &1088338880
 Transform:
   m_ObjectHideFlags: 0
@@ -22556,7 +22760,7 @@ MonoBehaviour:
   - {fileID: 288750677}
   - {fileID: 26662211}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 33.5, y: 3.5}
 --- !u!4 &1112464363
 Transform:
   m_ObjectHideFlags: 0
@@ -22608,7 +22812,7 @@ MonoBehaviour:
   - {fileID: 1360311177}
   - {fileID: 383214888}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -17.5, y: -10.5}
 --- !u!4 &1112546260
 Transform:
   m_ObjectHideFlags: 0
@@ -22669,7 +22873,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 17.5, y: -4.5}
 --- !u!4 &1116484893
 Transform:
   m_ObjectHideFlags: 0
@@ -22721,8 +22925,11 @@ MonoBehaviour:
   - {fileID: 2117734922}
   - {fileID: 2129530855}
   - {fileID: 26662211}
-  nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  - {fileID: 402312115}
+  - {fileID: 903664065}
+  nodeToJump:
+  - {fileID: 402312115}
+  t: {x: 25.5, y: 4.5}
 --- !u!4 &1122591743
 Transform:
   m_ObjectHideFlags: 0
@@ -22772,7 +22979,7 @@ MonoBehaviour:
   - {fileID: 310044804}
   - {fileID: 1759967517}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -9.5, y: -9.5}
 --- !u!4 &1138775576
 Transform:
   m_ObjectHideFlags: 0
@@ -22833,7 +23040,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 22.5, y: -4.5}
 --- !u!4 &1165864374
 Transform:
   m_ObjectHideFlags: 0
@@ -22883,7 +23090,7 @@ MonoBehaviour:
   - {fileID: 3645253}
   - {fileID: 1926772092}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 41.5, y: -11.5}
 --- !u!4 &1168487851
 Transform:
   m_ObjectHideFlags: 0
@@ -22945,9 +23152,8 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 981732738}
   - {fileID: 1686236399}
-  nodeToJump:
-  - {fileID: 1686236399}
-  <NodeJump>k__BackingField: 0
+  nodeToJump: []
+  t: {x: 25.5, y: -4.5}
 --- !u!4 &1181181615
 Transform:
   m_ObjectHideFlags: 0
@@ -22995,7 +23201,7 @@ MonoBehaviour:
   - {fileID: 1928285508}
   - {fileID: 1420622546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 1.5, y: -11.5}
 --- !u!4 &1192932595
 Transform:
   m_ObjectHideFlags: 0
@@ -23052,7 +23258,7 @@ MonoBehaviour:
   - {fileID: 534359086}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 8.5, y: 2.5}
 --- !u!4 &1206667352
 Transform:
   m_ObjectHideFlags: 0
@@ -23113,7 +23319,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 21.5, y: -4.5}
 --- !u!4 &1218705230
 Transform:
   m_ObjectHideFlags: 0
@@ -23174,7 +23380,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 16.5, y: -4.5}
 --- !u!4 &1223638440
 Transform:
   m_ObjectHideFlags: 0
@@ -23233,7 +23439,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 41.5, y: -4.5}
 --- !u!4 &1226819642
 Transform:
   m_ObjectHideFlags: 0
@@ -23286,7 +23492,7 @@ MonoBehaviour:
   - {fileID: 280037658}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 8.5, y: -10.5}
 --- !u!4 &1240158135
 Transform:
   m_ObjectHideFlags: 0
@@ -23339,7 +23545,7 @@ MonoBehaviour:
   - {fileID: 280037658}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 5.5, y: -10.5}
 --- !u!4 &1249741103
 Transform:
   m_ObjectHideFlags: 0
@@ -23400,7 +23606,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 13.5, y: -4.5}
 --- !u!4 &1255661728
 Transform:
   m_ObjectHideFlags: 0
@@ -23452,7 +23658,7 @@ MonoBehaviour:
   - {fileID: 1664978338}
   - {fileID: 750155195}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 2.5, y: -4.5}
 --- !u!4 &1258930226
 Transform:
   m_ObjectHideFlags: 0
@@ -23507,7 +23713,7 @@ MonoBehaviour:
   - {fileID: 584598218}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 39.5, y: 3.5}
 --- !u!4 &1311827990
 Transform:
   m_ObjectHideFlags: 0
@@ -23560,7 +23766,7 @@ MonoBehaviour:
   - {fileID: 2018243704}
   - {fileID: 1926772092}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 36.5, y: -10.5}
 --- !u!4 &1330111128
 Transform:
   m_ObjectHideFlags: 0
@@ -23617,7 +23823,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 0.5, y: 2.5}
 --- !u!4 &1332358213
 Transform:
   m_ObjectHideFlags: 0
@@ -23680,8 +23886,9 @@ MonoBehaviour:
   - {fileID: 1702039275}
   - {fileID: 778893713}
   - {fileID: 1918471290}
+  - {fileID: 50725186}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -16.5, y: 0.5}
 --- !u!1 &1338251840
 GameObject:
   m_ObjectHideFlags: 0
@@ -23718,7 +23925,7 @@ MonoBehaviour:
   - {fileID: 933521309}
   - {fileID: 697836916}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -1.5, y: -2.5}
 --- !u!4 &1338251842
 Transform:
   m_ObjectHideFlags: 0
@@ -23945,6 +24152,10 @@ Transform:
   - {fileID: 2117734923}
   - {fileID: 2129530856}
   - {fileID: 26662210}
+  - {fileID: 523051353}
+  - {fileID: 162032267}
+  - {fileID: 681737374}
+  - {fileID: 670834904}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23985,7 +24196,7 @@ MonoBehaviour:
   - {fileID: 487861193}
   - {fileID: 383214888}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -14.5, y: -10.5}
 --- !u!4 &1360311178
 Transform:
   m_ObjectHideFlags: 0
@@ -24033,7 +24244,7 @@ MonoBehaviour:
   - {fileID: 1759967517}
   - {fileID: 1633276984}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -7.5, y: -8.5}
 --- !u!4 &1373933403
 Transform:
   m_ObjectHideFlags: 0
@@ -24092,7 +24303,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 37.5, y: -4.5}
 --- !u!4 &1390591079
 Transform:
   m_ObjectHideFlags: 0
@@ -24147,7 +24358,7 @@ MonoBehaviour:
   - {fileID: 584598218}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 35.5, y: 3.5}
 --- !u!4 &1390767545
 Transform:
   m_ObjectHideFlags: 0
@@ -24202,7 +24413,7 @@ MonoBehaviour:
   - {fileID: 584598218}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 36.5, y: 3.5}
 --- !u!4 &1392332049
 Transform:
   m_ObjectHideFlags: 0
@@ -24252,7 +24463,7 @@ MonoBehaviour:
   - {fileID: 616491435}
   - {fileID: 1427027440}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 0.5, y: -10.5}
 --- !u!4 &1420622547
 Transform:
   m_ObjectHideFlags: 0
@@ -24300,7 +24511,7 @@ MonoBehaviour:
   - {fileID: 501598085}
   - {fileID: 487440991}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 24.5, y: -9.5}
 --- !u!4 &1423024957
 Transform:
   m_ObjectHideFlags: 0
@@ -24349,7 +24560,7 @@ MonoBehaviour:
   - {fileID: 616491435}
   - {fileID: 1420622546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -0.5, y: -10.5}
 --- !u!4 &1427027441
 Transform:
   m_ObjectHideFlags: 0
@@ -24408,7 +24619,7 @@ MonoBehaviour:
   - {fileID: 222897549}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 43.5, y: -4.5}
 --- !u!4 &1435148542
 Transform:
   m_ObjectHideFlags: 0
@@ -24460,7 +24671,7 @@ MonoBehaviour:
   - {fileID: 1360311177}
   - {fileID: 383214888}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -18.5, y: -10.5}
 --- !u!4 &1435634336
 Transform:
   m_ObjectHideFlags: 0
@@ -24521,7 +24732,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 23.5, y: -4.5}
 --- !u!4 &1462632899
 Transform:
   m_ObjectHideFlags: 0
@@ -24582,7 +24793,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 14.5, y: -4.5}
 --- !u!4 &1472434939
 Transform:
   m_ObjectHideFlags: 0
@@ -24648,8 +24859,11 @@ MonoBehaviour:
   - {fileID: 192765176}
   - {fileID: 493300192}
   - {fileID: 1060882341}
-  nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  - {fileID: 387570806}
+  - {fileID: 515822196}
+  nodeToJump:
+  - {fileID: 515822196}
+  t: {x: -6.5, y: 2.5}
 --- !u!1 &1486524423
 GameObject:
   m_ObjectHideFlags: 0
@@ -24687,7 +24901,7 @@ MonoBehaviour:
   - {fileID: 1360311177}
   - {fileID: 383214888}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -19.5, y: -10.5}
 --- !u!4 &1486524425
 Transform:
   m_ObjectHideFlags: 0
@@ -24745,9 +24959,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318a523fde50c4c409cf455ad16b4392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectedTo: []
+  ConnectedTo:
+  - {fileID: 901237451}
+  - {fileID: 387570806}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -6.5, y: -0.5}
 --- !u!1 &1512829132
 GameObject:
   m_ObjectHideFlags: 0
@@ -24779,8 +24995,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedTo:
   - {fileID: 901237451}
+  - {fileID: 1050125531}
+  - {fileID: 1138775575}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -8.5, y: -2.5}
 --- !u!4 &1512829134
 Transform:
   m_ObjectHideFlags: 0
@@ -24833,7 +25051,7 @@ MonoBehaviour:
   - {fileID: 280037658}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 6.5, y: -10.5}
 --- !u!4 &1535947114
 Transform:
   m_ObjectHideFlags: 0
@@ -24887,7 +25105,7 @@ MonoBehaviour:
   - {fileID: 520720100}
   - {fileID: 501598085}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 22.5, y: -10.5}
 --- !u!4 &1545336123
 Transform:
   m_ObjectHideFlags: 0
@@ -24946,7 +25164,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 32.5, y: -4.5}
 --- !u!4 &1553228758
 Transform:
   m_ObjectHideFlags: 0
@@ -24999,7 +25217,7 @@ MonoBehaviour:
   - {fileID: 280037658}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 7.5, y: -10.5}
 --- !u!4 &1607591423
 Transform:
   m_ObjectHideFlags: 0
@@ -25071,8 +25289,9 @@ MonoBehaviour:
   - {fileID: 1226819641}
   - {fileID: 222897549}
   - {fileID: 1435148541}
+  - {fileID: 523051352}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 44.5, y: -4.5}
 --- !u!1 &1632207098
 GameObject:
   m_ObjectHideFlags: 0
@@ -25119,7 +25338,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 18.5, y: -4.5}
 --- !u!4 &1632207100
 Transform:
   m_ObjectHideFlags: 0
@@ -25169,7 +25388,7 @@ MonoBehaviour:
   - {fileID: 693716511}
   - {fileID: 1373933402}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -6.5, y: -9.5}
 --- !u!4 &1633276985
 Transform:
   m_ObjectHideFlags: 0
@@ -25230,7 +25449,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 15.5, y: -4.5}
 --- !u!4 &1644538680
 Transform:
   m_ObjectHideFlags: 0
@@ -25289,7 +25508,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 39.5, y: -4.5}
 --- !u!4 &1655760840
 Transform:
   m_ObjectHideFlags: 0
@@ -25339,8 +25558,10 @@ MonoBehaviour:
   - {fileID: 1909824563}
   - {fileID: 888585584}
   - {fileID: 1818919825}
+  - {fileID: 89992947}
+  - {fileID: 1240158134}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 7.5, y: -4.5}
 --- !u!4 &1664978339
 Transform:
   m_ObjectHideFlags: 0
@@ -25401,7 +25622,7 @@ MonoBehaviour:
   - {fileID: 903664065}
   - {fileID: 1181181614}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 12.5, y: -4.5}
 --- !u!4 &1675034501
 Transform:
   m_ObjectHideFlags: 0
@@ -25455,7 +25676,7 @@ MonoBehaviour:
   - {fileID: 712561201}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 20.5, y: 4.5}
 --- !u!4 &1680343226
 Transform:
   m_ObjectHideFlags: 0
@@ -25509,7 +25730,7 @@ MonoBehaviour:
   - {fileID: 1926772092}
   - {fileID: 207510921}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 33.5, y: -10.5}
 --- !u!4 &1683472291
 Transform:
   m_ObjectHideFlags: 0
@@ -25568,9 +25789,9 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   - {fileID: 1181181614}
-  nodeToJump:
-  - {fileID: 1181181614}
-  <NodeJump>k__BackingField: 0
+  - {fileID: 937661167}
+  nodeToJump: []
+  t: {x: 31.5, y: -4.5}
 --- !u!4 &1686236400
 Transform:
   m_ObjectHideFlags: 0
@@ -25619,7 +25840,7 @@ MonoBehaviour:
   - {fileID: 1918471290}
   - {fileID: 1338159898}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -19.5, y: 0.5}
 --- !u!4 &1702039276
 Transform:
   m_ObjectHideFlags: 0
@@ -25673,7 +25894,7 @@ MonoBehaviour:
   - {fileID: 280037658}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 3.5, y: -10.5}
 --- !u!4 &1704195443
 Transform:
   m_ObjectHideFlags: 0
@@ -25726,7 +25947,7 @@ MonoBehaviour:
   - {fileID: 520720100}
   - {fileID: 1545336122}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 20.5, y: -10.5}
 --- !u!4 &1723873839
 Transform:
   m_ObjectHideFlags: 0
@@ -25775,7 +25996,7 @@ MonoBehaviour:
   - {fileID: 348231610}
   - {fileID: 693716511}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -5.5, y: -9.5}
 --- !u!4 &1746910967
 Transform:
   m_ObjectHideFlags: 0
@@ -25915,7 +26136,7 @@ MonoBehaviour:
   - {fileID: 2129530855}
   - {fileID: 26662211}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 28.5, y: 4.5}
 --- !u!4 &1757827496
 Transform:
   m_ObjectHideFlags: 0
@@ -25966,7 +26187,7 @@ MonoBehaviour:
   - {fileID: 1138775575}
   - {fileID: 1373933402}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -8.5, y: -9.5}
 --- !u!4 &1759967518
 Transform:
   m_ObjectHideFlags: 0
@@ -26020,7 +26241,7 @@ MonoBehaviour:
   - {fileID: 1680343225}
   - {fileID: 402312115}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 15.5, y: 4.5}
 --- !u!4 &1794539501
 Transform:
   m_ObjectHideFlags: 0
@@ -26153,7 +26374,7 @@ MonoBehaviour:
   - {fileID: 888585584}
   - {fileID: 1664978338}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 6.5, y: -4.5}
 --- !u!4 &1818919826
 Transform:
   m_ObjectHideFlags: 0
@@ -26212,7 +26433,7 @@ MonoBehaviour:
   - {fileID: 1435148541}
   - {fileID: 1624230729}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 34.5, y: -4.5}
 --- !u!4 &1826046438
 Transform:
   m_ObjectHideFlags: 0
@@ -26260,7 +26481,7 @@ MonoBehaviour:
   - {fileID: 53460922}
   - {fileID: 1987472470}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 28.5, y: -7.5}
 --- !u!4 &1838462294
 Transform:
   m_ObjectHideFlags: 0
@@ -26310,7 +26531,7 @@ MonoBehaviour:
   - {fileID: 383831626}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 11.5, y: -11.5}
 --- !u!4 &1880954325
 Transform:
   m_ObjectHideFlags: 0
@@ -26405,7 +26626,7 @@ MonoBehaviour:
   - {fileID: 1818919825}
   - {fileID: 1664978338}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 4.5, y: -4.5}
 --- !u!4 &1909824564
 Transform:
   m_ObjectHideFlags: 0
@@ -26458,7 +26679,7 @@ MonoBehaviour:
   - {fileID: 280037658}
   - {fileID: 514133546}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 4.5, y: -10.5}
 --- !u!4 &1912745560
 Transform:
   m_ObjectHideFlags: 0
@@ -26507,7 +26728,7 @@ MonoBehaviour:
   - {fileID: 304056767}
   - {fileID: 829754299}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 12.5, y: 3.5}
 --- !u!4 &1914003556
 Transform:
   m_ObjectHideFlags: 0
@@ -26556,7 +26777,7 @@ MonoBehaviour:
   - {fileID: 778893713}
   - {fileID: 1338159898}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -17.5, y: 0.5}
 --- !u!4 &1918471291
 Transform:
   m_ObjectHideFlags: 0
@@ -26609,7 +26830,7 @@ MonoBehaviour:
   - {fileID: 1060882341}
   - {fileID: 1478598503}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -11.5, y: 2.5}
 --- !u!4 &1923749246
 Transform:
   m_ObjectHideFlags: 0
@@ -26663,7 +26884,7 @@ MonoBehaviour:
   - {fileID: 391509478}
   - {fileID: 2018243704}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 40.5, y: -10.5}
 --- !u!4 &1926772093
 Transform:
   m_ObjectHideFlags: 0
@@ -26711,7 +26932,7 @@ MonoBehaviour:
   - {fileID: 1192932594}
   - {fileID: 1704195442}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 2.5, y: -11.5}
 --- !u!4 &1928285509
 Transform:
   m_ObjectHideFlags: 0
@@ -26768,7 +26989,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 6.5, y: 2.5}
 --- !u!4 &1942318726
 Transform:
   m_ObjectHideFlags: 0
@@ -26823,7 +27044,7 @@ MonoBehaviour:
   - {fileID: 584598218}
   - {fileID: 288750677}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 34.5, y: 3.5}
 --- !u!4 &1966357106
 Transform:
   m_ObjectHideFlags: 0
@@ -26872,7 +27093,7 @@ MonoBehaviour:
   - {fileID: 53460922}
   - {fileID: 1838462293}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 29.5, y: -7.5}
 --- !u!4 &1987472471
 Transform:
   m_ObjectHideFlags: 0
@@ -26925,7 +27146,7 @@ MonoBehaviour:
   - {fileID: 391509478}
   - {fileID: 1926772092}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 39.5, y: -10.5}
 --- !u!4 &2018243705
 Transform:
   m_ObjectHideFlags: 0
@@ -27042,7 +27263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019654279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.6, y: -1.5, z: 0}
+  m_LocalPosition: {x: 43.17, y: -9.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -27075,11 +27296,8 @@ MonoBehaviour:
   DrawPath: 1
   speed: 25
   maxDistanceToJump: 3
-  maxHypotenuse: 0
   Target: {fileID: 0}
   Path: []
-  tSubida: 0.3908235
-  tDescida: 0
 --- !u!58 &2019654286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -27230,7 +27448,7 @@ MonoBehaviour:
   - {fileID: 2018243704}
   - {fileID: 1926772092}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 37.5, y: -10.5}
 --- !u!4 &2027968966
 Transform:
   m_ObjectHideFlags: 0
@@ -27287,7 +27505,7 @@ MonoBehaviour:
   - {fileID: 1206667351}
   - {fileID: 410522846}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 5.5, y: 2.5}
 --- !u!4 &2094598958
 Transform:
   m_ObjectHideFlags: 0
@@ -27340,7 +27558,7 @@ MonoBehaviour:
   - {fileID: 520720100}
   - {fileID: 1545336122}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 19.5, y: -10.5}
 --- !u!4 &2109221158
 Transform:
   m_ObjectHideFlags: 0
@@ -27393,7 +27611,7 @@ MonoBehaviour:
   - {fileID: 2129530855}
   - {fileID: 26662211}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 30.5, y: 4.5}
 --- !u!4 &2117734923
 Transform:
   m_ObjectHideFlags: 0
@@ -27447,7 +27665,7 @@ MonoBehaviour:
   - {fileID: 520720100}
   - {fileID: 1545336122}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 15.5, y: -10.5}
 --- !u!4 &2129185912
 Transform:
   m_ObjectHideFlags: 0
@@ -27500,7 +27718,7 @@ MonoBehaviour:
   - {fileID: 2117734922}
   - {fileID: 26662211}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: 31.5, y: 4.5}
 --- !u!4 &2129530856
 Transform:
   m_ObjectHideFlags: 0
@@ -27550,7 +27768,7 @@ MonoBehaviour:
   - {fileID: 1420622546}
   - {fileID: 693716511}
   nodeToJump: []
-  <NodeJump>k__BackingField: 0
+  t: {x: -2.5, y: -10.5}
 --- !u!4 &2146963026
 Transform:
   m_ObjectHideFlags: 0

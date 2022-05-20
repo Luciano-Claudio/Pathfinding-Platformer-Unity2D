@@ -10,6 +10,7 @@ public class Node : MonoBehaviour
 {
     public List<Node> ConnectedTo = new List<Node>();
     [SerializeField] private List<Node> nodeToJump = new List<Node>();
+    public Vector2 t;
 
     private List<Node> AllNodes;
 
@@ -21,14 +22,13 @@ public class Node : MonoBehaviour
     private bool conection = false;
     private Vector3 mousePos;
 
-    [field: SerializeField]
-    public bool NodeJump { get; private set; }
     public List<Node> NodeToJump { get => nodeToJump; }
 
     private void Awake()
     {
         PathController = FindObjectOfType<AIPath>();
         tile = PathController != null ? PathController.Tile : null;
+        t = transform.position;
     }
     private void Start()
     {
@@ -54,7 +54,7 @@ public class Node : MonoBehaviour
                     {
                         ConnectedTo.Add(node);
                         if ((Mathf.Abs(node.transform.position.x - transform.position.x) > 2.1f
-                            || (Mathf.Abs(node.transform.position.x - transform.position.x) > 1.5f && Mathf.Round(Mathf.Abs(node.transform.position.y - transform.position.y)) == 0)) 
+                            || (Mathf.Abs(node.transform.position.x - transform.position.x) > 1.5f && Mathf.Round(Mathf.Abs(node.transform.position.y - transform.position.y)) == 0))
                             && node.transform.position.y - transform.position.y <= 0)
                             nodeToJump.Add(node);
                         break;
@@ -65,7 +65,7 @@ public class Node : MonoBehaviour
         }
 
         ConnectedTo.RemoveAll(delegate (Node o) { return o == null; });
-        nodeToJump.RemoveAll(delegate (Node o) { return o == null; });
+        nodeToJump.RemoveAll(delegate (Node o) { return !ConnectedTo.Contains(o); });
 
         if (transform.position != posAux && !mouseDown && tile != null)
             Reposition();

@@ -6,13 +6,14 @@ using System.Linq;
 public class MouseTarget : MonoBehaviour
 {
     [SerializeField] private Vector3 mousePos;
-    [SerializeField] private List<BotAI> Bots;
+    [SerializeField] private List<AIController> Bots;
     [SerializeField] private Transform circle;
+    [SerializeField] private Transform square;
 
     private void Awake()
     {
 
-        Bots = FindObjectsOfType<BotAI>().ToList();
+        Bots = FindObjectsOfType<AIController>().ToList();
     }
 
     // Update is called once per frame
@@ -23,10 +24,14 @@ public class MouseTarget : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 aux = new Vector3(mousePos.x, mousePos.y, 0);
             circle.position = aux;
-            foreach (var bot in Bots)
-            {
-                bot.Target = circle;
-            }
+            Bots.First().Target = circle;
         }
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    Vector3 aux = new Vector3(mousePos.x, mousePos.y, 0);
+        //    square.position = aux;
+        //    Bots.Last().Target = square;
+        //}
     }
 }
