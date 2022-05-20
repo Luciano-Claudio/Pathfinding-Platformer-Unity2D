@@ -9,6 +9,7 @@ using UnityEngine.Tilemaps;
 public class Node : MonoBehaviour
 {
     public List<Node> ConnectedTo = new List<Node>();
+    [SerializeField] private List<Node> nodeToJump = new List<Node>();
 
     private List<Node> AllNodes;
 
@@ -16,9 +17,13 @@ public class Node : MonoBehaviour
     private Vector3 posAux;
     private AIPath PathController;
 
-    [SerializeField] private bool mouseDown = false;
+    private bool mouseDown = false;
     private bool conection = false;
-    [SerializeField] private Vector3 mousePos;
+    private Vector3 mousePos;
+
+    [field: SerializeField]
+    public bool NodeJump { get; private set; }
+    public List<Node> NodeToJump { get => nodeToJump; }
 
     private void Awake()
     {
@@ -47,13 +52,11 @@ public class Node : MonoBehaviour
                     if (x > -0.5f && x < 0.5f
                         && y > -0.5f && y < 0.5f)
                     {
-                        Debug.Log(node);
-                        Debug.Log(x);
-                        Debug.Log(y);
-                        Debug.Log(" ");
-                        Debug.Log(node.transform.position);
-                        Debug.Log(mousePos);
                         ConnectedTo.Add(node);
+                        if ((Mathf.Abs(node.transform.position.x - transform.position.x) > 2.1f
+                            || (Mathf.Abs(node.transform.position.x - transform.position.x) > 1.5f && Mathf.Round(Mathf.Abs(node.transform.position.y - transform.position.y)) == 0)) 
+                            && node.transform.position.y - transform.position.y <= 0)
+                            nodeToJump.Add(node);
                         break;
                     }
                 }
@@ -61,10 +64,10 @@ public class Node : MonoBehaviour
             conection = false;
         }
 
-        if (tile == null)
-            return;
+        ConnectedTo.RemoveAll(delegate (Node o) { return o == null; });
+        nodeToJump.RemoveAll(delegate (Node o) { return o == null; });
 
-        if (transform.position != posAux && !mouseDown)
+        if (transform.position != posAux && !mouseDown && tile != null)
             Reposition();
 
     }
@@ -89,57 +92,6 @@ public class Node : MonoBehaviour
         AllNodes = FindObjectsOfType<Node>().ToList();
     }
 
-    public void MakeConections()
-    {
-        AllNodes = new List<Node>();
-        AllNodes = FindObjectsOfType<Node>().ToList();
-
-        bool obstacle, ground;
-        foreach (var node in AllNodes)
-        {
-            if (node == this || !node.enabled) continue;
-            if (ConnectedTo.Contains(node)) continue;
-
-            obstacle = false; ground = true;
-
-            if (transform.position.y == node.transform.position.y)
-            {
-                int x = Mathf.Abs((int)(transform.position.x - node.transform.position.x));
-                int signal = transform.position.x < node.transform.position.x ? 1 : -1;
-
-                Vector3 pos = transform.position;
-                pos.x -= tile.cellSize.x / 2;
-                pos.y -= tile.cellSize.y / 2;
-                for (int i = 1; i < x; i++)
-                {
-                    int variationX = i * signal;
-                    if (tile.HasTile(new Vector3Int((int)pos.x + variationX, (int)pos.y, 0)))
-                    {
-                        obstacle = true;
-                        break;
-                    }
-                }
-                for (int i = 0; i <= x; i++)
-                {
-                    int variationX = i * signal;
-                    if (!tile.HasTile(new Vector3Int((int)pos.x + variationX, (int)pos.y - 1, 0)))
-                    {
-                        ground = false;
-                        break;
-                    }
-                }
-                if ((!obstacle && ground))
-                    ConnectedTo.Add(node);
-            }
-            else if (Mathf.Round(Mathf.Abs(transform.position.x - node.transform.position.x)) == 1 
-                && Mathf.Round(Mathf.Abs(transform.position.y - node.transform.position.y)) == 1)
-            {
-                ConnectedTo.Add(node);
-            }
-
-        }
-    }
-
     void DrawName(Vector3 worldPos, Color? colour = null)
     {
         UnityEditor.Handles.BeginGUI();
@@ -157,7 +109,6 @@ public class Node : MonoBehaviour
         Gizmos.color = color;
         Gizmos.DrawLine(pos, direction);
 
-        Debug.Log(Quaternion.LookRotation(pos - direction));
         Vector3 right = Quaternion.LookRotation(pos - direction) * Quaternion.Euler(arrowHeadAngle, arrowHeadAngle, 0) * new Vector3(0, 0, 1);
         Vector3 left = Quaternion.LookRotation(pos - direction) * Quaternion.Euler(-arrowHeadAngle, -arrowHeadAngle, 0) * new Vector3(0, 0, 1);
         Gizmos.DrawRay((pos + direction) / 2, right * arrowHeadLength);
