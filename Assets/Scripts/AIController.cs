@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 
 public class AIController : MonoBehaviour
 {
-
     [SerializeField] private bool DrawPath = false;
 
 
@@ -14,7 +13,6 @@ public class AIController : MonoBehaviour
     [SerializeField] private float speed;
 
     private float minDist;
-    private float minYDist;
 
     [Tooltip("Max distance in blocks you can jump")]
     [SerializeField] private float maxDistanceToJump;
@@ -37,9 +35,10 @@ public class AIController : MonoBehaviour
 
     private LineRenderer m_LineRenderer;
 
-    private AIPath PathController;
-    private Tilemap tile;
-    private bool canJump = false;
+    private Node LastNode;
+
+    private bool canJump = true;
+    private float velocity;
 
 
     private bool tryAgain = false;
@@ -55,19 +54,18 @@ public class AIController : MonoBehaviour
             m_Rigidbody2D.freezeRotation = true;
         }
         controllerMovement = GetComponent<BotMovimentController>();
-        PathController = FindObjectOfType<AIPath>();
+
         AllNodes = FindObjectsOfType<Node>().ToList();
         m_LineRenderer = GetComponent<LineRenderer>();
 
-        tile = PathController != null ? PathController.Tile : null;
     }
     private void Start()
     {
         minDist = .1f;
-        minYDist = tile != null ? tile.cellSize.y * 2 : 2f;
         maxYDist = maxDistanceToJump + .1f;
         maxXDist = maxYDist * 2;
         maxHypotenuse = Mathf.Sqrt(2 * Mathf.Pow(maxYDist, 2));
+        velocity = speed;
     }
     void Update()
     {
@@ -83,7 +81,7 @@ public class AIController : MonoBehaviour
         if (Target == null || AllNodes.Count == 0)
             return;
 
-        if (!GetClosestNodeTo(Target).Equals(TargetNode) || tryAgain)
+        if ((!GetClosestNodeTo(Target).Equals(TargetNode) || tryAgain) && canJump)
         {
             FindPath();
             tryAgain = false;
@@ -152,7 +150,6 @@ public class AIController : MonoBehaviour
 
     void MakePath(Dictionary<Node, Node> nap)
     {
-        canJump = false;
         if (nap.Count > 0)
         {
             if (nap.ContainsKey(TargetNode) && nap.ContainsValue(ClosestNode))
@@ -166,9 +163,10 @@ public class AIController : MonoBehaviour
 
                 //Path.Add(ClosestNode);
                 Path.Reverse();
+                LastNode = ClosestNode;
+                canJump = true;
             }
         }
-        StartCoroutine(CanJump());
     }
 
     void MoveTowardsPath()
@@ -185,46 +183,51 @@ public class AIController : MonoBehaviour
 
             float xMag = Mathf.Abs(pos.position.x - transform.position.x);
             float yMag = pos.position.y - transform.position.y;
-            float velocity = speed;
 
-
-            if (currentNode && yMag <= maxYDist && (xMag >= minDist || Mathf.Abs(yMag) >= minYDist))
+            if (!(currentNode && yMag <= maxYDist && (xMag >= minDist || Mathf.Abs(yMag) >= maxYDist)))
             {
-                float xMagNode = nextNode != null ? Mathf.Abs(pos.position.x - nextNode.transform.position.x) : 0;
-
-                if (transform.position.x > pos.position.x)
-                    Direction = -1;
-                if (transform.position.x < pos.position.x)
-                    Direction = 1;
-
-                if (((transform.position.y + .1f < pos.position.y && yMag > minDist) || (xMagNode > 1.1f && currentNode.NodeToJump.Contains(nextNode) && xMag < minDist))
-                    && canJump)
-                {
-                    Jump = true;
-                    velocity = (xMag + 1) * 5;
-                    controllerMovement.m_JumpForce = CalculateJumpForce(xMag, Mathf.Abs(yMag));
-                    controllerMovement.IsJump = true;
-                    canJump = false;
-                }
-                Direction *= velocity * 10;
-
-                controllerMovement.HorizontalMove = Direction;
-            }
-            else
-            {
-                if (Path.First() == TargetNode && Vector2.Distance(pos.position, transform.position) < minDist)
+                LastNode = Path.First();
+                if (LastNode == TargetNode && Vector2.Distance(pos.position, transform.position) < minDist)
                 {
                     Path.Clear();
                     Target = null;
-                    canJump = true;
                 }
 
                 if (Path.Count > 1)
                 {
-                    Path.Remove(Path.First());
-                    canJump = true;
+                    Path.Remove(LastNode);
                 }
+
+                velocity = speed;
+                canJump = true;
+
+                return;
             }
+
+            float xMagNode = LastNode != currentNode ? Mathf.Abs(pos.position.x - LastNode.transform.position.x) : 0;
+            float yMagNode = LastNode != currentNode ? pos.position.y - LastNode.transform.position.y  : 0;
+
+            if (transform.position.x > pos.position.x)
+                Direction = -1;
+            if (transform.position.x < pos.position.x)
+                Direction = 1;
+
+            Direction = Mathf.Abs(yMag) >= maxYDist && m_Rigidbody2D.velocity.y < -1 ? 0 : Direction;
+
+            if (Mathf.Abs(yMag) > minDist
+                && (LastNode.NodeToJump.Contains(currentNode) || yMagNode > .1f)
+                && canJump)
+            {
+                Jump = true;
+                float aux = (xMag + 1) * 5;
+                velocity = aux > velocity ? aux : velocity;
+                controllerMovement.m_JumpForce = CalculateJumpForce(xMag, Mathf.Abs(yMag));
+                controllerMovement.IsJump = true;
+                canJump = false;
+            }
+            Direction *= velocity * 10;
+
+            controllerMovement.HorizontalMove = Direction;
         }
     }
     private Vector2 CalculateJumpForce(float xDistancefloat, float jumpHeight)
@@ -274,11 +277,10 @@ public class AIController : MonoBehaviour
     IEnumerator IsStopped()
     {
         yield return new WaitForSeconds(1);
-        if (m_Rigidbody2D.velocity == Vector2.zero) tryAgain = true;
-    }
-    IEnumerator CanJump()
-    {
-        yield return new WaitForSeconds(.1f);
-        canJump = true;
+        if (m_Rigidbody2D.velocity == Vector2.zero)
+        {
+            canJump = true;
+            tryAgain = true;
+        }
     }
 }

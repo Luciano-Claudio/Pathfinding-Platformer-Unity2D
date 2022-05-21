@@ -54,7 +54,7 @@ public class BotMovimentController : MonoBehaviour
         if (jump)
         {
             m_Rigidbody2D.velocity = Vector2.zero;
-            m_Rigidbody2D.AddForce(m_JumpForce, ForceMode2D.Impulse);
+            m_Rigidbody2D.AddForceAI(m_JumpForce);
         }
 
     }

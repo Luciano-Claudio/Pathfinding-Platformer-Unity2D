@@ -121,7 +121,6 @@ public class Node : MonoBehaviour
         {
             if (n == this)
             {
-
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawLine(transform.position, node.transform.position);
                 return;
