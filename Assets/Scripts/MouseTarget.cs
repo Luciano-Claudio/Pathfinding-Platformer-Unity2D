@@ -6,14 +6,14 @@ using System.Linq;
 public class MouseTarget : MonoBehaviour
 {
     [SerializeField] private Vector3 mousePos;
-    [SerializeField] private List<AIController> Bots;
+    [SerializeField] private List<AIPathController> Bots;
     [SerializeField] private Transform circle;
     [SerializeField] private Transform square;
 
     private void Awake()
     {
 
-        Bots = FindObjectsOfType<AIController>().ToList();
+        Bots = FindObjectsOfType<AIPathController>().ToList();
     }
 
     // Update is called once per frame

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class AIController : MonoBehaviour
+public class AIPathController : MonoBehaviour
 {
     [SerializeField] private bool DrawPath = false;
 
@@ -29,21 +29,22 @@ public class AIController : MonoBehaviour
     private Node ClosestNode;
     private Node TargetNode;
 
-    private BotMovimentController controllerMovement;
-
     private Rigidbody2D m_Rigidbody2D;
+
+    private Collider2D m_Collider2D;
 
     private LineRenderer m_LineRenderer;
 
-    private Node LastNode;
+    [SerializeField] private Node LastNode;
+    private Node auxLastNode;
 
     private bool canJump = true;
+    private bool tryAgain = false;
     private float velocity;
 
-
-    private bool tryAgain = false;
-    public bool Jump { get; private set; }
-    public float Direction { get; private set; }
+    public bool IsJumping { get; private set; }
+    public float HorizontalMove { get; private set; }
+    public Vector2 JumpForce { get; private set; }
 
     void Awake()
     {
@@ -53,7 +54,7 @@ public class AIController : MonoBehaviour
             m_Rigidbody2D = gameObject.AddComponent<Rigidbody2D>();
             m_Rigidbody2D.freezeRotation = true;
         }
-        controllerMovement = GetComponent<BotMovimentController>();
+        m_Collider2D = GetComponent<Collider2D>();
 
         AllNodes = FindObjectsOfType<Node>().ToList();
         m_LineRenderer = GetComponent<LineRenderer>();
@@ -61,7 +62,7 @@ public class AIController : MonoBehaviour
     }
     private void Start()
     {
-        minDist = .1f;
+        minDist = m_Collider2D.bounds.size.x / 2;
         maxYDist = maxDistanceToJump + .1f;
         maxXDist = maxYDist * 2;
         maxHypotenuse = Mathf.Sqrt(2 * Mathf.Pow(maxYDist, 2));
@@ -96,7 +97,7 @@ public class AIController : MonoBehaviour
         foreach (var node in AllNodes)
         {
             float distance = (node.transform.position - t.position).sqrMagnitude;
-            if (distance < minDistance)
+            if (distance < minDistance && node.hasGround)
             {
                 minDistance = distance;
                 fNode = node;
@@ -163,28 +164,32 @@ public class AIController : MonoBehaviour
 
                 //Path.Add(ClosestNode);
                 Path.Reverse();
-                LastNode = ClosestNode;
-                canJump = true;
+                LastNode = auxLastNode = ClosestNode;
             }
         }
     }
 
     void MoveTowardsPath()
     {
-        controllerMovement.HorizontalMove = 0;
-        Direction = 0;
-        Jump = false;
+        HorizontalMove = 0;
+        IsJumping = false;
 
         if (Path.Count > 0)
         {
             Node currentNode = Path.First();
-            Node nextNode = Path.Count > 1 ? Path.First(Path => Path != currentNode) : null;
             Transform pos = currentNode.transform;
+
+            if (LastNode != auxLastNode)
+            {
+                velocity = speed;
+                canJump = true;
+            }
+            auxLastNode = LastNode;
 
             float xMag = Mathf.Abs(pos.position.x - transform.position.x);
             float yMag = pos.position.y - transform.position.y;
 
-            if (!(currentNode && yMag <= maxYDist && (xMag >= minDist || Mathf.Abs(yMag) >= maxYDist)))
+            if (!(currentNode && yMag <= maxYDist && (xMag >= minDist || Mathf.Abs(yMag) >= minDist)))
             {
                 LastNode = Path.First();
                 if (LastNode == TargetNode && Vector2.Distance(pos.position, transform.position) < minDist)
@@ -198,49 +203,60 @@ public class AIController : MonoBehaviour
                     Path.Remove(LastNode);
                 }
 
-                velocity = speed;
-                canJump = true;
-
                 return;
             }
 
-            float xMagNode = LastNode != currentNode ? Mathf.Abs(pos.position.x - LastNode.transform.position.x) : 0;
-            float yMagNode = LastNode != currentNode ? pos.position.y - LastNode.transform.position.y  : 0;
+            float playerRelativeNode = Mathf.Abs(transform.position.y - LastNode.transform.position.y);
+            float yMagNode = LastNode != currentNode ? pos.position.y - LastNode.transform.position.y : 0;
+            bool direction = canJump && m_Rigidbody2D.velocity.y < -1 ? false : true;
 
-            if (transform.position.x > pos.position.x)
-                Direction = -1;
-            if (transform.position.x < pos.position.x)
-                Direction = 1;
-
-            Direction = Mathf.Abs(yMag) >= maxYDist && m_Rigidbody2D.velocity.y < -1 ? 0 : Direction;
-
-            if (Mathf.Abs(yMag) > minDist
-                && (LastNode.NodeToJump.Contains(currentNode) || yMagNode > .1f)
-                && canJump)
+            if (direction)
             {
-                Jump = true;
+                if (transform.position.x > pos.position.x)
+                    HorizontalMove = -1;
+                if (transform.position.x < pos.position.x)
+                    HorizontalMove = 1;
+            }
+
+            //Direction = Mathf.Abs(yMag) >= maxYDist && m_Rigidbody2D.velocity.y < -1 ? 0 : Direction;
+
+            if (LastNode.NodeToJump.Contains(currentNode)
+                && playerRelativeNode <= minDist && canJump)
+            {
+                IsJumping = true;
                 float aux = (xMag + 1) * 5;
                 velocity = aux > velocity ? aux : velocity;
-                controllerMovement.m_JumpForce = CalculateJumpForce(xMag, Mathf.Abs(yMag));
-                controllerMovement.IsJump = true;
+                JumpForce = CalculateJumpForce(xMag, yMag);
                 canJump = false;
             }
-            Direction *= velocity * 10;
-
-            controllerMovement.HorizontalMove = Direction;
+            HorizontalMove *= velocity * 10;
         }
     }
-    private Vector2 CalculateJumpForce(float xDistancefloat, float jumpHeight)
+    private Vector2 CalculateJumpForce(float xDistance, float jumpHeight)
     {
-        float distance = jumpHeight;
+        float distance = Mathf.Abs(jumpHeight);
+        float extra = .5f;
 
-        if (jumpHeight < .5f)
-            distance = (xDistancefloat + 1) / 2;
+        if (distance >= .5f && xDistance >= 1.5f)
+        {
+            if (jumpHeight > 0)
+            {
+                distance = distance >= xDistance ? distance : xDistance;
+                extra = 0;
+            }
+            else
+            {
+                distance = xDistance > 2 ? (xDistance - 1) / 2 : 1;
+                extra = 0;
+            }
+        }
+        else if (distance < .5f)
+            distance = (xDistance + 1) / 2;
 
         if (distance > maxYDist)
             distance = maxYDist;
 
-        Vector2 force = new Vector2(0, (Mathf.Sqrt(2 * distance * Physics2D.gravity.magnitude * m_Rigidbody2D.gravityScale) * m_Rigidbody2D.mass) + .5f);
+        Vector2 force = new Vector2(0, (Mathf.Sqrt(2 * distance * Physics2D.gravity.magnitude * m_Rigidbody2D.gravityScale) * m_Rigidbody2D.mass) + extra);
 
         return force;
     }

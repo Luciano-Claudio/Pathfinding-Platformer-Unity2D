@@ -10,7 +10,7 @@ public class Node : MonoBehaviour
 {
     public List<Node> ConnectedTo = new List<Node>();
     [SerializeField] private List<Node> nodeToJump = new List<Node>();
-    public Vector2 t;
+    public bool RepositionNode = true;
 
     private List<Node> AllNodes;
 
@@ -22,18 +22,25 @@ public class Node : MonoBehaviour
     private bool conection = false;
     private Vector3 mousePos;
 
+    public bool hasGround;
+
     public List<Node> NodeToJump { get => nodeToJump; }
 
     private void Awake()
     {
         PathController = FindObjectOfType<AIPath>();
         tile = PathController != null ? PathController.Tile : null;
-        t = transform.position;
     }
     private void Start()
     {
-        if (tile != null)
+        if (tile != null && RepositionNode)
             Reposition();
+
+
+        if (Application.IsPlaying(gameObject))
+        {
+            hasGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - .7f), .1f);
+        }
     }
 
     void Update()
@@ -53,10 +60,7 @@ public class Node : MonoBehaviour
                         && y > -0.5f && y < 0.5f)
                     {
                         ConnectedTo.Add(node);
-                        if ((Mathf.Abs(node.transform.position.x - transform.position.x) > 2.1f
-                            || (Mathf.Abs(node.transform.position.x - transform.position.x) > 1.5f && Mathf.Round(Mathf.Abs(node.transform.position.y - transform.position.y)) == 0))
-                            && node.transform.position.y - transform.position.y <= 0)
-                            nodeToJump.Add(node);
+                        AddToJump(node);
                         break;
                     }
                 }
@@ -67,7 +71,7 @@ public class Node : MonoBehaviour
         ConnectedTo.RemoveAll(delegate (Node o) { return o == null; });
         nodeToJump.RemoveAll(delegate (Node o) { return !ConnectedTo.Contains(o); });
 
-        if (transform.position != posAux && !mouseDown && tile != null)
+        if (transform.position != posAux && !mouseDown && tile != null && RepositionNode)
             Reposition();
 
     }
@@ -90,6 +94,51 @@ public class Node : MonoBehaviour
         conection = true;
         AllNodes = new List<Node>();
         AllNodes = FindObjectsOfType<Node>().ToList();
+    }
+    public void AddToJump(Node node)
+    {
+        if (nodeToJump.Contains(node))
+            return;
+
+        if (node.transform.position.y - transform.position.y > .1f)
+        {
+            nodeToJump.Add(node);
+            return;
+        }
+
+        if (Mathf.Abs(node.transform.position.x - transform.position.x) > 2.1f && node.transform.position.y - transform.position.y < -.1f)
+        {
+            nodeToJump.Add(node);
+            return;
+        }
+
+        if (tile != null)
+        {
+            if (Mathf.Abs(node.transform.position.x - transform.position.x) > 1.5f)
+            {
+                bool ground = false;
+
+                int x = Mathf.Abs((int)(node.transform.position.x - transform.position.x));
+
+                int signal = transform.position.x < node.transform.position.x ? 1 : -1;
+
+                Vector3 tilePos = transform.position;
+                tilePos.x -= tile.cellSize.x / 2;
+                tilePos.y -= tile.cellSize.y / 2;
+
+                for (int i = 1; i < x; i++)
+                {
+                    int variationX = i * signal;
+                    if (tile.HasTile(new Vector3Int((int)tilePos.x + variationX, (int)tilePos.y - 1, (int)tilePos.z)))
+                    {
+                        ground = true;
+                        break;
+                    }
+                }
+                if (!ground)
+                    nodeToJump.Add(node);
+            }
+        }
     }
 
     void DrawName(Vector3 worldPos, Color? colour = null)

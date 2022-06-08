@@ -109,6 +109,7 @@ public class AIPath : MonoBehaviour
                 && Mathf.Round(Mathf.Abs(pos.y - target.y)) == 1)
             {
                 node.ConnectedTo.Add(n);
+                node.AddToJump(n);
             }
 
         }
